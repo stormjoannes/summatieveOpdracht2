@@ -28,7 +28,7 @@ public class  Main {
         ToDo.add(0);
 
         //hier print ik mijn resultaat
-        System.out.println("A: " + s0.getFollow(s0, ToDo));
+        System.out.println("A: " + s0.getNextStepAanroepen(s0, ToDo));
 
 
         //hier maak ik weer al mijn nodes aan volgens het schema.
@@ -89,6 +89,6 @@ public class  Main {
         g9.setFollow(e10);
 
         //hier print ik weer het eindresultaat
-        System.out.println("B: " + g0.getFollow_2(g0));
+        System.out.println("B: " + g0.getVolgendeWorpAanroepen(g0));
     }
 }

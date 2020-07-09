@@ -35,7 +35,7 @@ class NodeTest_2 {
         expected.add("s1");
         expected.add("s3");
 
-        assertEquals(expected, s0.getFollow(s0, ToDo));
+        assertEquals(expected, s0.getNextStepAanroepen(s0, ToDo));
     }
 
     @Test
@@ -64,7 +64,7 @@ class NodeTest_2 {
         expected.add("s1");
         expected.add("s3");
 
-        assertEquals(expected, s0.getFollow(s0, ToDo));
+        assertEquals(expected, s0.getNextStepAanroepen(s0, ToDo));
     }
 
     @Test
@@ -138,7 +138,7 @@ class NodeTest_2 {
         g9.setFollow(g3);
         g9.setFollow(e10);
 
-        ArrayList<String> need = g0.getFollow_2(g0);
+        ArrayList<String> need = g0.getVolgendeWorpAanroepen(g0);
         String exp = need.get(need.size() - 1);
         //hier kijk ik of wat er uit komt niet g0, g1, g2, g3, g4, g5, g6, g7, g8, g9 is of iets dat niet eind bevat.
         assertNotEquals(g0, exp);
@@ -211,7 +211,7 @@ class NodeTest_2 {
         g9.setFollow(g3);
         g9.setFollow(e10);
 
-        ArrayList<String> need = g0.getFollow_2(g0);
+        ArrayList<String> need = g0.getVolgendeWorpAanroepen(g0);
         String exp = need.get(need.size() - 1);
         //hier kijk ik of wat er uit komt niet g0, g1, g2, g3, g4, g5, g6, g7, g8, g9 is of iets dat niet eind bevat.
         assertNotEquals(g0, exp);
