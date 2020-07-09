@@ -6,13 +6,13 @@ import java.util.Random;
 public class Node {
     private String Current;
     //de aankomende 3 lists zijn mijn lists voor het eerste gedeelte(getFollow).
-    private ArrayList<Node> done = new ArrayList<>();
-    public ArrayList<Node> Follows = new ArrayList<>();
-    private ArrayList<String> str_done = new ArrayList<>();
+    private ArrayList<Node> afegelopenStappenNodes = new ArrayList<>();
+    public ArrayList<Node> gelinkteNodes = new ArrayList<>();
+    private ArrayList<String> afegelopenStappenStrings = new ArrayList<>();
  
     //de aankomende 2 lists zijn mijn lists voor het tweede gedeelte(getFollow_2).
-    private ArrayList<Node> done_2 = new ArrayList<>();
-    private ArrayList<String> str_gedaan = new ArrayList<>();
+    private ArrayList<Node> voorgaandeWorpenNodes = new ArrayList<>();
+    private ArrayList<String> voorgaandeWorpenStrings = new ArrayList<>();
 
     //de current gebruik ik overal om te zien in welke node ik op het moment zit.
     public Node(String cr) {
@@ -26,7 +26,7 @@ public class Node {
         if (ToDo.size() != 0) {
             if (!Current.contains("None")) {
                 //hier zorg ik dat de 1e van de lijst die afgelopen moet worden apart wordt genomen zodat ik vervolgens die eerste kan verwijderen om deze lijst weer mee te geven naar de volgende node.
-                Node nxt = Follows.get(ToDo.get(0));
+                Node nxt = gelinkteNodes.get(ToDo.get(0));
                 ToDo.remove(0);
                 nxt.getNextStep(nxt, ToDo, done, str_done);
             } else {
@@ -42,13 +42,13 @@ public class Node {
 
     //in deze methode zorg ik dat het begin en eind goed verloopt. Deze functie returned hetzelfde als de functie hier boven returned.
     public ArrayList<String> getNextStepAanroepen(Node at, ArrayList<Integer> ToDo) {
-        getNextStep(at, ToDo, done, str_done);
-        return str_done;
+        getNextStep(at, ToDo, afegelopenStappenNodes, afegelopenStappenStrings);
+        return afegelopenStappenStrings;
     }
 
     //in deze functie zorg ik ervoor dat er een arraylist per node onstaat waarin de transities staan per node.
     public void setFollow(Node val_nd) {
-        Follows.add(val_nd);
+        gelinkteNodes.add(val_nd);
     }
 
 
@@ -60,11 +60,11 @@ public class Node {
         if (!Current.contains("eind")) {
             //hier maak ik een random aan naar de lengte van hoeveel transities er zijn. zijn er 2 mogelijke transities dan zal er 0 of 1 gekozen worden en zijn er 8 mogelijke overgangen zullen er van 0 tot 8 mogelijke getallen uitkomen.
             //zo zorg ik ervoor dat de code reusable is en de kans om een pad te volgen niet altijd 50/50 is.
-            Random rand = new Random();
-            int nmr = rand.nextInt(Follows.size());
-            Node nxt = Follows.get(nmr);
+            Random randomWorp = new Random();
+            int nmr = randomWorp.nextInt(gelinkteNodes.size());
+            Node volgendeNode = gelinkteNodes.get(nmr);
             //hier pak ik de transitie die gekozen is door de random en roep met die transitie weer een nieuwe getFollow aan.
-            Follows.get(nmr).getVolgendeWorp(nxt, done, str_gedaan);
+            gelinkteNodes.get(nmr).getVolgendeWorp(volgendeNode, done, str_gedaan);
         } else {
             return done;
         }
@@ -73,7 +73,7 @@ public class Node {
 
     //in deze methode zorg ik dat het begin en eind goed verloopt. Deze functie returned hetzelfde als de functie hier boven returned.
     public ArrayList<String> getVolgendeWorpAanroepen(Node Now) {
-        getVolgendeWorp(Now, done_2, str_gedaan);
-        return str_gedaan;
+        getVolgendeWorp(Now, voorgaandeWorpenNodes, voorgaandeWorpenStrings);
+        return voorgaandeWorpenStrings;
     }
 }

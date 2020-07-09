@@ -81,8 +81,8 @@ class NodeTest {
         g6.setFollow(e6);
 
         //ik kijk hier of de method de goeie arraylist met transities aanmaakt.
-        assertEquals(g6.Follows.get(0), g2);
-        assertEquals(g6.Follows.get(1), e6);
+        assertEquals(g6.gelinkteNodes.get(0), g2);
+        assertEquals(g6.gelinkteNodes.get(1), e6);
     }
 
     @Test
