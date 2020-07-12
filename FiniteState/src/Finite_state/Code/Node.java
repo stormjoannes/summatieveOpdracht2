@@ -87,5 +87,4 @@ public class Node {
         }
         return voorgaandeWorpenInNodes;
     }
-
 }
