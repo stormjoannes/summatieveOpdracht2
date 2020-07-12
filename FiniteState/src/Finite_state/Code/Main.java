@@ -22,19 +22,14 @@ public class  Main {
         s3.setFollowingNodes(s3);
         s3.setFollowingNodes(s2);
 
-        //hier zet je je input neer, hoe hoger de letters die je plaatst hoe hogere connecties je moet maken. als je dus 0 en 1 plaatst heb je dus 2 connecties. als je ergens een 7 plaatst moet je dus zorgen dat je 7 connecties hebt bij je nodes.
-
-
+        //input van het woord
         Scanner myObj = new Scanner(System.in);
         System.out.println("Enter the configuration: ");
         String inputWord = myObj.nextLine();
 
-//        nogNietVerwerkteNodes.add(1);
-//        nogNietVerwerkteNodes.add(1);
-//        nogNietVerwerkteNodes.add(0);
-
         //hier print ik mijn resultaat
         System.out.println("A: " + s0.getNextStepAanroepen(s0, inputWord.toLowerCase()));
+
 
         //hier maak ik weer al mijn nodes aan volgens het schema.
         Node g0 = new Node("g0");
