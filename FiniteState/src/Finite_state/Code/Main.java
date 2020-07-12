@@ -1,6 +1,7 @@
 package Finite_state.Code;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class  Main {
     public static void main(String[] arg) {
@@ -12,24 +13,28 @@ public class  Main {
         Node s3 = new Node("s3");
 
         //hier zet ik de transitie per node neer naar waar die zou moeten kunnen gaan.
-        s0.setFollow(s1);
-        s0.setFollow(s3);
-        s1.setFollow(s1);
-        s1.setFollow(s3);
-        s2.setFollow(s0);
-        s2.setFollow(s1);
-        s3.setFollow(s3);
-        s3.setFollow(s2);
+        s0.setFollowingNodes(s1);
+        s0.setFollowingNodes(s3);
+        s1.setFollowingNodes(s1);
+        s1.setFollowingNodes(s3);
+        s2.setFollowingNodes(s0);
+        s2.setFollowingNodes(s1);
+        s3.setFollowingNodes(s3);
+        s3.setFollowingNodes(s2);
 
         //hier zet je je input neer, hoe hoger de letters die je plaatst hoe hogere connecties je moet maken. als je dus 0 en 1 plaatst heb je dus 2 connecties. als je ergens een 7 plaatst moet je dus zorgen dat je 7 connecties hebt bij je nodes.
-        ArrayList<Integer> ToDo = new ArrayList<>();
-        ToDo.add(1);
-        ToDo.add(1);
-        ToDo.add(0);
+
+
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Enter the configuration: ");
+        String inputWord = myObj.nextLine();
+
+//        nogNietVerwerkteNodes.add(1);
+//        nogNietVerwerkteNodes.add(1);
+//        nogNietVerwerkteNodes.add(0);
 
         //hier print ik mijn resultaat
-        System.out.println("A: " + s0.getNextStepAanroepen(s0, ToDo));
-
+        System.out.println("A: " + s0.getNextStepAanroepen(s0, inputWord.toLowerCase()));
 
         //hier maak ik weer al mijn nodes aan volgens het schema.
         Node g0 = new Node("g0");
@@ -56,37 +61,37 @@ public class  Main {
         Node e10 = new Node("eind-10");
 
         //hier zet ik weer per node alle transities.
-        g0.setFollow(g1);
-        g0.setFollow(g2);
-        g0.setFollow(g3);
+        g0.setFollowingNodes(g1);
+        g0.setFollowingNodes(g2);
+        g0.setFollowingNodes(g3);
 
-        g1.setFollow(g4);
-        g1.setFollow(g5);
+        g1.setFollowingNodes(g4);
+        g1.setFollowingNodes(g5);
 
 
-        g2.setFollow(g6);
-        g2.setFollow(g7);
+        g2.setFollowingNodes(g6);
+        g2.setFollowingNodes(g7);
 
-        g3.setFollow(g8);
-        g3.setFollow(g9);
+        g3.setFollowingNodes(g8);
+        g3.setFollowingNodes(g9);
 
-        g4.setFollow(g1);
-        g4.setFollow(e1);
+        g4.setFollowingNodes(g1);
+        g4.setFollowingNodes(e1);
 
-        g5.setFollow(e2);
-        g5.setFollow(e3);
+        g5.setFollowingNodes(e2);
+        g5.setFollowingNodes(e3);
 
-        g6.setFollow(e4);
-        g6.setFollow(e5);
+        g6.setFollowingNodes(e4);
+        g6.setFollowingNodes(e5);
 
-        g7.setFollow(e6);
-        g7.setFollow(e7);
+        g7.setFollowingNodes(e6);
+        g7.setFollowingNodes(e7);
 
-        g8.setFollow(e8);
-        g8.setFollow(e9);
+        g8.setFollowingNodes(e8);
+        g8.setFollowingNodes(e9);
 
-        g9.setFollow(g3);
-        g9.setFollow(e10);
+        g9.setFollowingNodes(g3);
+        g9.setFollowingNodes(e10);
 
         //hier print ik weer het eindresultaat
         System.out.println("B: " + g0.getVolgendeWorpAanroepen(g0));

@@ -15,28 +15,25 @@ class NodeTest {
         Node s1 = new Node("s1");
         Node s2 = new Node("s2");
         Node s3 = new Node("s3");
-        ArrayList<Integer> ToDo = new ArrayList<>();
         ArrayList<String> expected = new ArrayList<>();
 
-        s0.setFollow(s1);
-        s0.setFollow(s3);
-        s1.setFollow(s1);
-        s1.setFollow(s3);
-        s2.setFollow(s0);
-        s2.setFollow(s1);
-        s3.setFollow(s3);
-        s3.setFollow(s2);
+        s0.setFollowingNodes(s1);
+        s0.setFollowingNodes(s3);
+        s1.setFollowingNodes(s1);
+        s1.setFollowingNodes(s3);
+        s2.setFollowingNodes(s0);
+        s2.setFollowingNodes(s1);
+        s3.setFollowingNodes(s3);
+        s3.setFollowingNodes(s2);
 
-        ToDo.add(1);
-        ToDo.add(1);
-        ToDo.add(0);
+        String inputWord = "bba";
 
         expected.add("s0");
         expected.add("s3");
         expected.add("s2");
         expected.add("s0");
 
-        assertEquals(expected, s0.getNextStepAanroepen(s0, ToDo));
+        assertEquals(expected, s0.getNextStepAanroepen(s0, inputWord.toLowerCase()));
     }
 
     @Test
@@ -49,25 +46,23 @@ class NodeTest {
         ArrayList<Integer> ToDo = new ArrayList<>();
         ArrayList<String> expected = new ArrayList<>();
 
-        s0.setFollow(s1);
-        s0.setFollow(s3);
-        s1.setFollow(s1);
-        s1.setFollow(s3);
-        s2.setFollow(s0);
-        s2.setFollow(s1);
-        s3.setFollow(s3);
-        s3.setFollow(s2);
+        s0.setFollowingNodes(s1);
+        s0.setFollowingNodes(s3);
+        s1.setFollowingNodes(s1);
+        s1.setFollowingNodes(s3);
+        s2.setFollowingNodes(s0);
+        s2.setFollowingNodes(s1);
+        s3.setFollowingNodes(s3);
+        s3.setFollowingNodes(s2);
 
-        ToDo.add(1);
-        ToDo.add(1);
-        ToDo.add(0);
+        String inputWord = "bba";
 
         expected.add("s0");
         expected.add("s3");
         expected.add("s2");
         expected.add("s0");
 
-        assertEquals(expected, s0.getNextStepAanroepen(s0, ToDo));
+        assertEquals(expected, s0.getNextStepAanroepen(s0, inputWord.toLowerCase()));
     }
 
     @Test
@@ -77,8 +72,8 @@ class NodeTest {
 
         Node e6 = new Node("eind-6");
 
-        g6.setFollow(g2);
-        g6.setFollow(e6);
+        g6.setFollowingNodes(g2);
+        g6.setFollowingNodes(e6);
 
         //ik kijk hier of de method de goeie arraylist met transities aanmaakt.
         assertEquals(g6.gelinkteNodes.get(0), g2);
@@ -94,12 +89,12 @@ class NodeTest {
         Node e1 = new Node("eind-1");
         Node e2 = new Node("eind-2");
 
-        g0.setFollow(g1);
-        g0.setFollow(g2);
-        g1.setFollow(g0);
-        g1.setFollow(e1);
-        g2.setFollow(g0);
-        g2.setFollow(e2);
+        g0.setFollowingNodes(g1);
+        g0.setFollowingNodes(g2);
+        g1.setFollowingNodes(g0);
+        g1.setFollowingNodes(e1);
+        g2.setFollowingNodes(g0);
+        g2.setFollowingNodes(e2);
 
         ArrayList<String> need = g0.getVolgendeWorpAanroepen(g0);
         String exp = need.get(need.size() - 1);
@@ -120,12 +115,12 @@ class NodeTest {
         Node e1 = new Node("eind-1");
         Node e2 = new Node("eind-2");
 
-        g0.setFollow(g1);
-        g0.setFollow(g2);
-        g1.setFollow(g0);
-        g1.setFollow(e1);
-        g2.setFollow(g0);
-        g2.setFollow(e2);
+        g0.setFollowingNodes(g1);
+        g0.setFollowingNodes(g2);
+        g1.setFollowingNodes(g0);
+        g1.setFollowingNodes(e1);
+        g2.setFollowingNodes(g0);
+        g2.setFollowingNodes(e2);
 
         ArrayList<String> need = g0.getVolgendeWorpAanroepen(g0);
         String exp = need.get(need.size() - 1);
